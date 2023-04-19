@@ -1,35 +1,25 @@
-// foreach e arrow function 
-const imagens = document.querySelectorAll('img')
+// classes e atributos
+const menu = document.querySelector('.menu')
 
-// imagens.forEach(function(imagem){
-//   console.log(imagem)
-// })
+menu.classList.add('ativo', 'teste')
+menu.classList.remove('teste')
+menu.classList.toggle('dark') // se tiver a tag ele remove / se não tiver ele coloca
 
-const titulos = document.getElementsByClassName('titulo')
-const titulosArray = Array.from(titulos)
+if(menu.classList.contains('dark')) {
+  console.log('website cor escura')
+}
+ 
+console.log(menu.classList[1])
+console.log(menu.classList)
 
-// titulosArray.forEach((titulo) => console.log(titulo))
+const animais = document.querySelector('.animais')
+console.log(animais.attributes.class)
 
-// Mostre no console cada parágrado do site
-const paragrafos = document.querySelectorAll('p')
+const img = document.querySelector('img')
+console.log(img.getAttribute('src'))
 
-paragrafos.forEach((paragrafo) => console.log(paragrafo.innerText))
+const setAltImg = img.setAttribute('alt', 'É uma raposa')
+console.log(img)
 
-// Mostre o texto dos parágrafos no console
-
-
-// Como corrigir os erros abaixo:
-
-const imgs = document.querySelectorAll('img');
-
-imgs.forEach((item, index) => {
-  console.log(item, index);
-});
-
-// let i = 0;
-// imgs.forEach(() => {
-//   console.log(i++);
-// });
-
-// imgs.forEach(() => i++);
-
+const possuiTitulo = img.hasAttribute('title')
+console.log(possuiTitulo)
