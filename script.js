@@ -1,25 +1,26 @@
-// classes e atributos
-const menu = document.querySelector('.menu')
+// Adicione a classe ativo a todos os itens do menu
+const itensMenu = document.querySelectorAll('.menu a')
 
-menu.classList.add('ativo', 'teste')
-menu.classList.remove('teste')
-menu.classList.toggle('dark') // se tiver a tag ele remove / se não tiver ele coloca
+itensMenu.forEach((item) => {
+  item.classList.add('ativo')
+})
 
-if(menu.classList.contains('dark')) {
-  console.log('website cor escura')
-}
- 
-console.log(menu.classList[1])
-console.log(menu.classList)
+// Remove a classe ativo de todos os itens do menu e mantenha apenas no primeiro
+itensMenu.forEach((item) => {
+  item.classList.remove('ativo')
+})
 
-const animais = document.querySelector('.animais')
-console.log(animais.attributes.class)
+itensMenu[0].classList.add('ativo')
 
-const img = document.querySelector('img')
-console.log(img.getAttribute('src'))
+// Verifique se as imagens possuem o atributo alt
+const imgs = document.querySelectorAll('img')
 
-const setAltImg = img.setAttribute('alt', 'É uma raposa')
-console.log(img)
+imgs.forEach((img) => {
+  const possuiAtributo = img.hasAttribute('alt')
+  console.log(img, possuiAtributo)
+})
 
-const possuiTitulo = img.hasAttribute('title')
-console.log(possuiTitulo)
+// Modifique o href do link externo no menu
+const linkInterno = document.querySelector('a[href^="https://"]')
+
+linkInterno.setAttribute('href', 'origamid.com')
