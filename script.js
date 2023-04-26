@@ -1,26 +1,20 @@
-// Adicione a classe ativo a todos os itens do menu
-const itensMenu = document.querySelectorAll('.menu a')
+// Dimensões e distâncias
+const listaAnimais = document.querySelector('.animais-lista')
+const footer = document.querySelector('.copy')
 
-itensMenu.forEach((item) => {
-  item.classList.add('ativo')
-})
+console.log(listaAnimais.clientHeight)
+console.log(footer.offsetTop)
 
-// Remove a classe ativo de todos os itens do menu e mantenha apenas no primeiro
-itensMenu.forEach((item) => {
-  item.classList.remove('ativo')
-})
+const primeiroH2 = document.querySelector('h2')
+const h2left = primeiroH2.offsetLeft
 
-itensMenu[0].classList.add('ativo')
+console.log(h2left)
 
-// Verifique se as imagens possuem o atributo alt
-const imgs = document.querySelectorAll('img')
+const rect = primeiroH2.getBoundingClientRect()
+console.log(rect)
+console.log(rect.height)
 
-imgs.forEach((img) => {
-  const possuiAtributo = img.hasAttribute('alt')
-  console.log(img, possuiAtributo)
-})
-
-// Modifique o href do link externo no menu
-const linkInterno = document.querySelector('a[href^="https://"]')
-
-linkInterno.setAttribute('href', 'origamid.com')
+console.log(
+  window.innerWidth,
+  window.innerHeight
+)
