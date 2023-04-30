@@ -1,52 +1,47 @@
-const imgs = document.querySelectorAll('img')
+const h1 = document.querySelector('h1')
 
-function handleImg(event) {
-  console.log(event.target.getAttribute('src'))
-}
+console.log(h1.innerHTML) // pega o conteudo de dentro do h1
+console.log(h1.innerText) // pega só o texto
+console.log(h1.outerHTML) // pega toda a tag 
 
-imgs.forEach((img) => {
-  img.addEventListener('click', handleImg)
-})
+// h1.innerHTML = '<p>Novo titulo</p>' // coloca dentro do h1 = <h1><p>novo titulo</p></h1>
 
-// Quando o usuário clicar nos links internos do site,
-// adicione a classe ativo ao item clicado e remova dos
-// demais itens caso eles possuam a mesma. Previna
-// o comportamento padrão desses links
-const linksInternos = document.querySelectorAll('a[href^="#"]')
+// h1.innerText = '<p>Aqui ele não renderiza a tag</p>' // só muda o texto
 
-function handleLink(event) {
-  event.preventDefault()
-  linksInternos.forEach((link) => {
-    link.classList.remove('ativo')
-  })
-  this.classList.add('ativo')
-}
+// h1.outerHTML = '<a href="#">Titulo</a>' // substitui a tag h1 pela tag a
 
-linksInternos.forEach((link) => {
-  link.addEventListener('click', handleLink)
-})
+// ============== Traversing e Manipulação ===============
+const animaisLista = document.querySelector('.animais-lista')
 
-// Selecione todos os elementos do site começando a partir do body,
-// ao clique mostre exatamente quais elementos estão sendo clicados
+console.log(animaisLista.parentElement) // pega o elemento pai o que envolve ele
+console.log(animaisLista.nextElementSibling) // pega o proximo elemento no mesmo nivel dele
+console.log(animaisLista.previousElementSibling) // pega o elemento anterior no mesmo nivel dele
 
-const todosElementos = document.querySelector('body')
+console.log(animaisLista.children) // pega os filhos
+console.log(animaisLista.children[0]) // pega o primeiro elemento
+console.log(animaisLista.children[--animaisLista.children.length]) // pega o ultimo elemento da lista
+console.log(animaisLista.querySelector('li:last-child')) // pegando o ultimo item com seletor css
 
-function handleElementos(event) {
-  console.log(event.target)
-  // console.log(event.target.remove())
-}
+const animais = document.querySelector('.animais')
+const contato = document.querySelector('.contato')
+const titulo = contato.querySelector('h1')
 
-todosElementos.addEventListener('click', handleElementos)
+// animais.appendChild(titulo) // move o titulo para o final de animais
 
+const mapa = document.querySelector('.mapa')
 
-// Utilizando o código anterior, ao invés de mostrar no console,
-// remova o elemento que está sendo clicado, o método remove() remove um elemento
+// contato.insertBefore(animais, mapa)  // ele insere a lista antes do mapa, é importa o segundo parametro preciso estar dentro do elemento pai, aqui no caso é mapa dentro de contato
 
-// Se o usuário clicar na tecla (t), aumente todo o texto do site. 
-function handleKeyboard(event) {
-  if(event.key === 't') {
-    document.body.style.fontSize = '24px'
-  }
-}
+// contato.removeChild(titulo) // exlui o titulo de contato
+// contato.replaceChild(h1, mapa) // substitui o mapa pelo titulo de h1
 
-window.addEventListener('keydown', handleKeyboard)
+const novoH1 = document.createElement('h1')
+novoH1.innerText = 'Novo titulo'
+novoH1.classList.add('titulo')
+
+mapa.appendChild(novoH1)
+
+const cloneNovoH1 = novoH1.cloneNode(true) // clona o elemento, com o true ele clone com tudo que tem dentro
+
+cloneNovoH1.innerText = 'Esther'
+animais.appendChild(cloneNovoH1)
