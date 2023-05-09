@@ -1,20 +1,19 @@
-// Duplique o menu e adicione ele em copy
-const menu = document.querySelector('.menu')
-const footer = document.querySelector('.copy')
-const cloneMenu = menu.cloneNode(true)
+const tabMenu = document.querySelectorAll('.js-tabmenu li')
+const tabContent = document.querySelectorAll('.js-tabcontent section')
 
-footer.appendChild(cloneMenu)
+if (tabMenu.length && tabContent.length) {
+  tabContent[0].classList.add('ativo')
 
-// Selecione o primeiro DT da dl de Faq
-const faq = document.querySelector('.faq-lista')
-const primeiraDT = faq.querySelector('dt')
+  function activetab(index) {
+    tabContent.forEach((section) => {
+      section.classList.remove('ativo')
+    })
+    tabContent[index].classList.add('ativo')
+  }
 
-console.log(primeiraDT)
-
-// Selecione o DD referente ao primeiro DT
-console.log(primeiraDT.nextElementSibling)
-
-// Substitua o conteúdo html de .faq pelo de .animais
-const aniamis = document.querySelector('.animais')
-
-faq.innerHTML = aniamis.innerHTML
+  tabMenu.forEach((itemMenu, index) => {
+    itemMenu.addEventListener('click', () => {
+      activetab(index)
+    })
+  })
+}
