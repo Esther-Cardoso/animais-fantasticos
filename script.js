@@ -22,8 +22,6 @@ function initTabNav() {
 
 initTabNav()
 
-
-
 function initAccordion() {
   const accordionList = document.querySelectorAll('.js-accordion dt')
   const acctiveClass = 'ativo'
@@ -45,3 +43,36 @@ function initAccordion() {
 }
 
 initAccordion()
+
+function initScrollSuave() {
+  const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]')
+
+  function scrollToSection(event) {
+    event.preventDefault()
+    const href = event.currentTarget.getAttribute('href')
+    const section = document.querySelector(href)
+  
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+  
+  linksInternos.forEach((link) => {
+    link.addEventListener('click', scrollToSection)
+  })  
+}
+
+initScrollSuave()
+
+function initTop() {
+  const btnTopo = document.querySelector("#back-to-top");
+  btnTopo.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+}
+
+initTop()
