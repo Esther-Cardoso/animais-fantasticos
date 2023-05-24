@@ -1,39 +1,73 @@
-// Exercicios prototype
+// Utilizando o foreach na array abaixo,
+// some os valores de Taxa e os valores de Recebimento
 
-// Crie uma função construtora de Pessoas
-// Deve conter nome, sobrenome e idade
-// Crie um método no protótipo que retorne
-// o nome completo da pessoa
-function Pessoa(nome, sobrenome, idade) {
-  this.nome = nome
-  this.sobrenome = sobrenome
-  this.idade = idade
-}
+const transacoes = [
+  {
+    descricao: 'Taxa do Pão',
+    valor: 'R$ 39',
+  },
+  {
+    descricao: 'Taxa do Mercado',
+    valor: 'R$ 129',
+  },
+  {
+    descricao: 'Recebimento de Cliente',
+    valor: 'R$ 99',
+  },
+  {
+    descricao: 'Taxa do Banco',
+    valor: 'R$ 129',
+  },
+  {
+    descricao: 'Recebimento de Cliente',
+    valor: 'R$ 49',
+  },
+];
 
-Pessoa.prototype.nomeCompleto = function() {
-  return `${this.nome} ${this.sobrenome}`
-}
+let taxaTotal = 0
+let recebimentoTotal = 0
+transacoes.forEach((item) => {
+  const valorLimpo = +item.valor.replace('R$ ', '')
+  if(item.descricao.slice(0,4) === 'Taxa') {
+    taxaTotal += valorLimpo
+  } else if (item.descricao.slice(0,4) === 'Rece') {
+    recebimentoTotal += valorLimpo
+  }
+})
 
-const esther = new Pessoa('Esther', 'Cardoso', 21)
-console.log(esther.nomeCompleto())
+console.log(`Taxa = ${taxaTotal}`)
+console.log(`Recebimento = ${recebimentoTotal}`)
 
-// Liste os métodos acessados por 
-// dados criados com NodeList,
-// HTMLCollection, Document 
+// Retorne uma array com a lista abaixo
+const transportes = 'Carro;Avião;Trem;Ônibus;Bicicleta';
+const arrayTransportes = transportes.split(';')
 
-// NodeList.prototype  // assim aparece todos os metodos e propriedades 
-// Object.getOwnPropertyNames(HTMLCollection.prototype) // assim também retorna
+console.log(arrayTransportes)
 
-// Liste os construtores dos dados abaixo
-const li = document.querySelector('li');
+// Substitua todos os span's por a's
+const html = `<ul>
+                <li><span>Sobre</span></li>
+                <li><span>Produtos</span></li>
+                <li><span>Contato</span></li>
+              </ul>`;
 
-// li; HTMLLIElement 
-// li.click;  function
-// li.innerText; String
-// li.value; Number
-// li.hidden; Boolean
-// li.offsetLeft; Number
-// li.click(); undefined
+const htmlNovo = html.split('span').join('a')
 
-// Qual o construtor do dado abaixo:
-// li.hidden.constructor.name; String
+console.log(htmlNovo)
+
+// Retorne o último caracter da frase
+const frase = 'Melhor do ano!';
+console.log(`Ultimo caracter = '${frase[frase.length - 1]}'`)
+console.log(frase.slice(-1))
+
+// Retorne o total de taxas
+const transacoes2 = ['Taxa do Banco', '   TAXA DO PÃO', '  taxa do mercado', 'depósito Bancário', 'TARIFA especial'];
+
+let totalTaxas = 0
+transacoes2.forEach((item) => {
+  if(item.trim().toLowerCase().includes('taxa')) {
+    totalTaxas += 1
+  }
+})
+
+console.log(`Existe ${totalTaxas} taxas`)
