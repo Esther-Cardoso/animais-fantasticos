@@ -1,49 +1,52 @@
-let valor = 20.85
+const comidas = ['Pizza', 'Frango', 'Carne', 'Macarrão'];
+// Remova o primeiro valor de comidas e coloque em uma variável
+const primeiraComida = comidas.shift()
 
-valor = valor.toLocaleString('pt-BR', { style:'currency', currency: 'BRL' }) 
-// valor = valor.toLocaleString('en-US', { style:'currency', currency: 'USD' }) 
+// Remova o último valor de comidas e coloque em uma variável
+const ultimaComida = comidas.pop()
 
-// 'pt-BR' = Formato do Brasil
-// style:'currency' = para moeda
-// currency: 'BRL' = O simbolo usado R$
+// Adicione 'Arroz' ao final da array
+const addArroz = comidas.push('arroz')
 
-console.log(valor)
+// Adicione 'Peixe' e 'Batata' ao início da array
+const addNoInicio = comidas.unshift('peixe', 'batata')
 
-// const aleatorio = Math.floor(Math.random() * 100)
-// const aleatorio = Math.floor(Math.random() * (max - min + 1)) + min
-const aleatorio = Math.floor(Math.random() * (500 - 300 + 1)) + 300
+console.log(comidas)
 
-console.log(aleatorio)
+const estudantes = ['Marcio', 'Brenda', 'Joana', 'Kleber', 'Julia'];
+// Arrume os estudantes em ordem alfabética
+const ordem = estudantes.sort()
 
-// ====================== Exercicios ====================
+// Inverta a ordem dos estudantes
+const inverta = estudantes.reverse()
 
-// Retorne um número aleatório
-// entre 1050 e 2000
+// Verifique se Joana faz parte dos estudantes
+const joana = estudantes.includes('Joana')
+console.log(joana)
 
-const numeroAleatorio = Math.floor(Math.random() * (2000 - 1050 + 1)) + 1050
+// Verifique se Juliana faz parte dos estudantes
+const juliana = estudantes.includes('Juliana')
+console.log(juliana)
 
-console.log(numeroAleatorio)
+console.log(estudantes)
 
+let html = `<section>
+              <div>Sobre</div>
+              <div>Produtos</div>
+              <div>Contato</div>
+            </section>`
+// Substitua section por ul e div com li,
+// utilizando split e join
+html = html.split('section').join('ul').split('div').join('li')
 
-// Retorne o maior número da lista abaixo
-let numeros = '4, 5, 20, 8, 9';
-numeros = numeros.split(', ')
+console.log(html)
 
-console.log(numeros)
+const carros = ['Ford', 'Fiat', 'VW', 'Honda'];
+// Remova o último carro, mas antes de remover
+// salve a array original em outra variável
 
+const cloneCarros = carros.slice()
+carros.pop()
 
-// Crie uma função para limpar os preços
-// e retornar os números com centavos arredondados
-// depois retorne a soma total
-const listaPrecos = ['R$ 59,99', ' R$ 100,222',
-                     'R$ 230  ', 'r$  200'];
-
-
-let somaTotal = 0
-listaPrecos.forEach((item) => {
-  const numeroLimpo = item.toUpperCase().replace('R$ ', '').trim()
-  const numeroArredondado = Number.parseFloat(numeroLimpo)
-  somaTotal += numeroArredondado
-})
-
-console.log(somaTotal)
+console.log(carros)
+console.log(cloneCarros)
