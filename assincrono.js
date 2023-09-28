@@ -1,25 +1,32 @@
-// const promesa = new Promise((resolve, reject) => {
-//   let condicao = true 
-//   if(condicao) {
-//     resolve({nome: 'Esther', idade: 21})
-//   } else {
-//     reject(Error('Ocorreu um erro na promise'))
-//   }
+// const cep = fetch('https://viacep.com.br/ws/01001000/json/')
+
+// cep.then(resolucao => resolucao.json())
+// .then(body => {
+//   const conteudo = document.querySelector('.conteudo')
+//   conteudo.innerText = body.localidade
+//   console.log(body)
 // })
 
-// promesa.then(resolucao => console.log(resolucao))
+// ============= imagem ===============
+const imagem = fetch('./img/imagem1.jpg')
 
-const login = new Promise(resolve => {
-  setTimeout(() => {
-    resolve('Login concluido')
-  }, 1000);
-})
-const dados = new Promise(resolve => {
-  setTimeout(() => {
-    resolve('Dados concluido')
-  }, 1500);
+imagem.then(resolucao => resolucao.blob())
+.then(body => {
+  const blobURL = URL.createObjectURL(body)
+  const imagemDom = document.querySelector('img')
+  imagemDom.src = blobURL
 })
 
-const carregouTudo = Promise.all([login, dados])
+// =========== clone ============
+// const cep = fetch('https://viacep.com.br/ws/01001000/json/')
 
-carregouTudo.then(resolucao => console.log(resolucao))
+// cep.then(resolucao => {
+//   const resolucaoJson =  resolucao.clone()
+//   resolucao.text().then((text) => console.log(text))
+//   resolucaoJson.json().then((json) => console.log(json))
+// })
+// .then(body => {
+//   const conteudo = document.querySelector('.conteudo')
+//   conteudo.innerText = body.localidade
+//   console.log(body)
+// })
