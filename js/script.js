@@ -7,7 +7,7 @@ import initTop from './modules/topo.js';
 import initDropdownMenu from './modules/dropdown-menu.js';
 import initMenuMobile from './modules/menu-mobile.js';
 import initFucionamento from './modules/funcionamento.js';
-import initFetchAnimais from './modules/fetch-animais.js';
+import fetchAnimais from './modules/fetch-animais.js';
 import initFetchBitcoin from './modules/fetch-bitcoin.js';
 import initAnimacaoScroll from './modules/animacao-scroll.js';
 
@@ -37,6 +37,8 @@ initTop();
 initDropdownMenu();
 initMenuMobile();
 initFucionamento();
-initFetchAnimais();
+// initFetchAnimais();
 initFetchBitcoin();
 initAnimacaoScroll();
+
+fetchAnimais('../../animaisapi.json', '.numeros-grid');
